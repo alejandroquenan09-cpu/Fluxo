@@ -1,0 +1,927 @@
+/* ==================================================
+   FLUXO
+   Liquid Glass / Fluid Technology
+   ================================================== */
+
+
+/* ---------- BASE ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7fcff 0%,
+            #eaf7fc 45%,
+            #f9fdff 100%
+        );
+
+    color: #17242d;
+
+    overflow: hidden;
+}
+
+
+/* ---------- FONDO FLUIDO ---------- */
+
+.fluid-background {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.fluid-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(45px);
+
+    opacity: 0.55;
+
+    will-change: transform;
+}
+
+
+/* Primera masa de luz */
+
+.orb-one {
+    width: 520px;
+    height: 520px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(116, 215, 247, 0.55),
+            rgba(116, 215, 247, 0)
+        );
+
+    top: -180px;
+    right: -100px;
+
+    animation: fluidOne 18s ease-in-out infinite;
+}
+
+
+/* Segunda masa */
+
+.orb-two {
+    width: 430px;
+    height: 430px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(163, 207, 255, 0.45),
+            rgba(163, 207, 255, 0)
+        );
+
+    bottom: -160px;
+    left: -100px;
+
+    animation: fluidTwo 22s ease-in-out infinite;
+}
+
+
+/* Tercera masa */
+
+.orb-three {
+    width: 300px;
+    height: 300px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190, 239, 255, 0.45),
+            rgba(190, 239, 255, 0)
+        );
+
+    left: 40%;
+    top: 45%;
+
+    animation: fluidThree 25s ease-in-out infinite;
+}
+
+
+/* ---------- ANIMACIONES DEL FONDO ---------- */
+
+@keyframes fluidOne {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-80px, 60px)
+            scale(1.12);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes fluidTwo {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(100px, -70px)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+}
+
+
+@keyframes fluidThree {
+
+    0% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(-60px, -40px)
+            scale(1.15);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+}
+
+
+/* ---------- APLICACIÓN ---------- */
+
+.app {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 1;
+}
+
+
+/* ---------- PÁGINAS ---------- */
+
+.page {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(25px)
+        scale(0.98);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s;
+
+}
+
+
+.page.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* ---------- INICIO ---------- */
+
+.hero {
+
+    width: min(1050px, 90vw);
+
+    min-height: 75vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+}
+
+
+/* ---------- LOGO ---------- */
+
+.brand {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    letter-spacing: -0.5px;
+
+}
+
+
+.brand-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #42b9e8;
+
+    box-shadow:
+        0 0 12px rgba(66,185,232,0.7);
+
+}
+
+
+/* ---------- TEXTO PRINCIPAL ---------- */
+
+.hero-content {
+
+    max-width: 720px;
+
+}
+
+
+.eyebrow {
+
+    margin-bottom: 18px;
+
+    color: #249acb;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(90px, 15vw, 170px);
+
+    line-height: 0.8;
+
+    letter-spacing: -10px;
+
+    font-weight: 600;
+
+    color: #16242d;
+
+}
+
+
+.hero h2 {
+
+    margin-top: 30px;
+
+    font-size:
+        clamp(24px, 3.5vw, 42px);
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    letter-spacing: -1.5px;
+
+}
+
+
+.description {
+
+    max-width: 530px;
+
+    margin: 24px auto 0;
+
+    color: #657782;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ---------- BOTONES ---------- */
+
+.navigation {
+
+    margin-top: 50px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+}
+
+
+.glass-button {
+
+    min-width: 145px;
+
+    padding: 14px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    border: 1px solid rgba(255,255,255,0.85);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255,255,255,0.42);
+
+    color: #263640;
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+
+        0 10px 30px rgba(45,100,130,0.08),
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.9);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.5s ease,
+        background 0.5s ease,
+        box-shadow 0.5s ease;
+
+}
+
+
+.glass-button:hover {
+
+    transform:
+        translateY(-4px)
+        scale(1.02);
+
+    background:
+        rgba(255,255,255,0.68);
+
+    box-shadow:
+
+        0 18px 40px
+        rgba(45,100,130,0.13),
+
+        inset 0 1px 1px
+        white;
+
+}
+
+
+.glass-button span:last-child {
+
+    color: #249acb;
+
+    transition:
+        transform 0.4s ease;
+
+}
+
+
+.glass-button:hover span:last-child {
+
+    transform:
+        translateX(4px);
+
+}
+
+
+/* ---------- PÁGINAS INTERNAS ---------- */
+
+.page-content {
+
+    width: min(1050px, 90vw);
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    padding: 20px;
+
+}
+
+
+.page-content > h2 {
+
+    max-width: 800px;
+
+    font-size:
+        clamp(45px, 7vw, 85px);
+
+    line-height: 0.95;
+
+    letter-spacing: -5px;
+
+    font-weight: 500;
+
+}
+
+
+.large-text {
+
+    max-width: 700px;
+
+    margin-top: 35px;
+
+    color: #647782;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+}
+
+
+/* ---------- BOTÓN VOLVER ---------- */
+
+.back-button {
+
+    position: absolute;
+
+    top: 45px;
+    left: 45px;
+
+    border: 1px solid
+        rgba(255,255,255,0.8);
+
+    background:
+        rgba(255,255,255,0.4);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 12px 18px;
+
+    border-radius: 30px;
+
+    color: #455862;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+
+}
+
+
+.back-button:hover {
+
+    transform:
+        translateX(-4px);
+
+    background:
+        rgba(255,255,255,0.7);
+
+}
+
+
+/* ---------- SERVICIOS ---------- */
+
+.service-grid {
+
+    margin-top: 50px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.service-card {
+
+    position: relative;
+
+    min-height: 270px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    border-radius: 32px;
+
+    border: 1px solid
+        rgba(255,255,255,0.85);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.62),
+            rgba(255,255,255,0.28)
+        );
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+
+        0 20px 50px
+        rgba(50,100,130,0.08),
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.9);
+
+    transition:
+        transform 0.6s ease,
+        box-shadow 0.6s ease;
+
+}
+
+
+.service-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+
+        0 30px 70px
+        rgba(50,100,130,0.13);
+
+}
+
+
+.service-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -90px;
+    bottom: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(105,205,240,0.18);
+
+    filter: blur(25px);
+
+}
+
+
+.service-card span {
+
+    color: #249acb;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.service-card h3 {
+
+    margin-top: auto;
+
+    margin-bottom: 14px;
+
+    font-size: 25px;
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+
+}
+
+
+.service-card p {
+
+    color: #687984;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ---------- FORMULARIO ---------- */
+
+.contact-form {
+
+    width: min(600px, 100%);
+
+    margin-top: 40px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    border-radius: 32px;
+
+    border: 1px solid
+        rgba(255,255,255,0.85);
+
+    background:
+        rgba(255,255,255,0.4);
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+}
+
+
+.contact-form input,
+.contact-form textarea {
+
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 1px solid
+        rgba(100,150,170,0.15);
+
+    border-radius: 18px;
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,0.55);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+}
+
+
+.contact-form textarea {
+
+    min-height: 130px;
+
+    resize: vertical;
+
+}
+
+
+.contact-form button {
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: #17242d;
+
+    color: white;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+
+}
+
+
+.contact-form button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background: #249acb;
+
+}
+
+
+/* ---------- CELULAR ---------- */
+
+@media (max-width: 750px) {
+
+    .page {
+
+        padding: 25px;
+
+    }
+
+
+    .brand {
+
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        align-self: flex-start;
+
+        margin-bottom: 60px;
+
+    }
+
+
+    .hero {
+
+        width: 100%;
+
+        min-height: 90vh;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 90px;
+
+        letter-spacing: -6px;
+
+    }
+
+
+    .hero h2 {
+
+        font-size: 28px;
+
+    }
+
+
+    .description {
+
+        font-size: 14px;
+
+    }
+
+
+    .navigation {
+
+        width: 100%;
+
+        margin-top: 35px;
+
+    }
+
+
+    .glass-button {
+
+        flex: 1 1 45%;
+
+        min-width: 130px;
+
+    }
+
+
+    .service-grid {
+
+        grid-template-columns: 1fr;
+
+        margin-top: 35px;
+
+    }
+
+
+    .page-content > h2 {
+
+        font-size: 50px;
+
+        letter-spacing: -3px;
+
+    }
+
+
+    .back-button {
+
+        top: 25px;
+
+        left: 25px;
+
+    }
+
+
+    .page-content {
+
+        padding-top: 60px;
+
+        max-height: 90vh;
+
+    }
+
+}
